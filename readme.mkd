@@ -1,0 +1,49 @@
+# Collision
+
+This is a library for handling collision negotiation, because I'm tired
+of copy pasting, re-implementing, and making the same mistakes over and over.
+
+Requires: https://github.com/mediapop/eventsmanager
+
+    var collidables = new Collidables();
+
+    function GameObject(){
+        var x = 0;
+        var y = 0;
+        var width = 100;
+        var height = 100;
+
+        this.collidable = new Collidable({
+            bounds: function(){
+                return new BoundingBox(this.x,
+                                        this.y,
+                                        this.x + this.width,
+                                        this.y + this.height);
+            }
+        });
+        this.collidable.on("collide", function(collidable){
+            console.log("OUCH collided with :'(", collidable);
+        });
+        this.powerUp = function(){
+            this.collidable.ephemeral = true;
+            setTimeout(function(){
+                this.collidable.ephemeral = false;
+            }, 2000);
+        };
+    }
+
+    var obj = new GameObject();
+    var obj2 = new GameObject();
+
+    collidables.add(obj);
+    collidables.add(obj2);
+
+    collidables.collisions();
+    // [obj, obj2]
+
+    collidables.handle();
+    // Send collide events to all collidables
+
+    if(obj.collidable.isCollidingWith(obj2.collidable)){
+        console.log("TERRIBLE THINGS JUST HAPPENED");
+    }
