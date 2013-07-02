@@ -70,6 +70,6 @@
     exports.Collidables = Collidables;
     exports.BoundingBox = BoundingBox;
     exports.Collidable = Collidable;
-})(typeof exports === 'undefined' ? this['mymodule'] = {} : exports);
+})(typeof exports === 'undefined' ? this['collision'] = {} : exports);
 
 
