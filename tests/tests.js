@@ -3,7 +3,7 @@ var collision = require('../collision');
 
 describe('BoundingBox', function(){
     describe('intersects', function(){
-        it('When top left & bottom right corner intersects', function(){
+        it('should be true when top left & bottom right corner intersect.', function(){
             /* 11
              * 1o2
              *  22
@@ -13,7 +13,7 @@ describe('BoundingBox', function(){
             assert.equal(box1.intersects(box2), true);
             assert.equal(box2.intersects(box1), true);
         });
-        it('When top right & bottom left corner intersects', function(){
+        it('should be true when top right & bottom left corner intersect.', function(){
             /*  11
              * 2o1
              * 22
@@ -23,7 +23,7 @@ describe('BoundingBox', function(){
             assert.equal(box1.intersects(box2), true);
             assert.equal(box2.intersects(box1), true);
         });
-        it('Inbetween x-axis', function(){
+        it('should be true when a smaller box is lodged in between on the x-axis', function(){
             /* 1111
              * 1oo1
              *  22
@@ -33,7 +33,7 @@ describe('BoundingBox', function(){
             assert.equal(box1.intersects(box2), true);
             assert.equal(box2.intersects(box1), true);
         });
-        it('Inbetween y-axis', function(){
+        it('should be true when a smaller box is lodged in between on the y-axis', function(){
             /* 11
              * 1o2
              * 1o2
@@ -44,7 +44,7 @@ describe('BoundingBox', function(){
             assert.equal(box1.intersects(box2), true);
             assert.equal(box2.intersects(box1), true);
         });
-        it('Engulfed', function(){
+        it('should be true when one box is ungulfed by another', function(){
             /* 1111
              * 1221
              * 1221
@@ -55,7 +55,7 @@ describe('BoundingBox', function(){
             assert.equal(box1.intersects(box2), true);
             assert.equal(box2.intersects(box1), true);
         });
-        it('No collision x-axis neighbours', function(){
+        it('should be false when they are x-axis neighbours but not intersecting', function(){
             /* 1122
              * 1122
              * */
@@ -64,7 +64,7 @@ describe('BoundingBox', function(){
             assert.equal(box1.intersects(box2), false);
             assert.equal(box2.intersects(box1), false);
         });
-        it('No collision y-axis neighbours', function(){
+        it('should be false when they are y-axis neighbours but not intersecting', function(){
             /* 11
              * 11
              * 22
@@ -75,7 +75,7 @@ describe('BoundingBox', function(){
             assert.equal(box1.intersects(box2), false);
             assert.equal(box2.intersects(box1), false);
         });
-        it('No collision', function(){
+        it('should be false when not intersecting on any axis', function(){
             /* 11
              * 11
              *   22
