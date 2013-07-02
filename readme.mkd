@@ -47,3 +47,8 @@ Requires: https://github.com/mediapop/eventsmanager
     if(obj.collidable.isCollidingWith(obj2.collidable)){
         console.log("TERRIBLE THINGS JUST HAPPENED");
     }
+
+# Test
+
+    npm install -g mocha
+    make test
